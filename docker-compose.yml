@@ -1,0 +1,9 @@
+version: "3.5"
+services:
+  # rosnode:
+  #   image: rosnode
+  #   build: ./rosnode
+  foxglove:
+    image: ghcr.io/foxglove/studio
+    ports:
+      - 8080:8080
