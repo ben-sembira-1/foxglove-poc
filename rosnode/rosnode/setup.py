@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'pubsub = py_pubsub.publisher_member_function:main',
+            'pubsub = rosnode.publisher_member_function:main',
         ],
     },
 )

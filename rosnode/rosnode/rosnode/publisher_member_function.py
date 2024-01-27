@@ -23,7 +23,7 @@ class MinimalPubSub(Node):
     def __init__(self):
         super().__init__('minimal_pubsub')
         self.last_message = "--"
-        timer_period = 0.5  # seconds
+        timer_period_seconds = 0.5
         self.i = 0
         self.subscription = self.create_subscription(
             String,
@@ -32,10 +32,12 @@ class MinimalPubSub(Node):
             10
         )
         self.publisher_ = self.create_publisher(String, '/hey', 10)
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer = self.create_timer(
+            timer_period_seconds, self.timer_callback)
 
-    def update_last_message(self, new_message: str):
-        self.last_message = new_message
+    def update_last_message(self, new_message: String):
+        self.get_logger().info(f"Updating the last message to: {new_message}")
+        self.last_message = new_message.data
 
     def timer_callback(self):
         msg = String()
